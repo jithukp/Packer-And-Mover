@@ -1,0 +1,45 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+{% extends 'adminindex.html' %}
+{% block body %}
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<style>
+
+  .table{
+
+    width: 50%;
+
+  }
+
+</style>
+<form id="form1" name="form1" method="post" action="vrus">
+  <div align="center">
+    <table width="200" border="1" class="table table-striped table-hover">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Place</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">status</th>
+      </tr>
+      {% for i in val %}
+      <tr>
+        <td>{{i['first_name']}}-{{i['last_name']}}</td>
+        <td>{{i['place']}}</td>
+        <td>{{i['date']}}</td>
+        <td>{{i['amount']}}</td>
+        <td><a href="vd?id={{i['ur_id']}}#about">more details</a></td>
+        <td><a href="avh?id={{i['ur_id']}}">assign</a></td>
+      </tr>
+      {% endfor %}
+      </table>
+  </div>
+</form>
+</body>
+{% endblock %}}

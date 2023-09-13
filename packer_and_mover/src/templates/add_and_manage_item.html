@@ -1,0 +1,45 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+{% extends 'adminindex.html' %}
+{% block body %}
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-MANAGE_PRICE8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<style>
+
+  .table{
+
+    width: 50%;
+
+  }
+
+</style>
+<form id="form1" name="form1" method="post" action="MANAGE_PRICE#about">
+  <div align="center">
+    <table width="200" border="1" class="table table-striped table-hover">
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+      {% for i in val %}
+      <tr>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td><p><a href="UPDATE_PRICE?id={{i[0]}}">Edit</a></p>
+        <p><a href=DELETE?id={{i[0]}}">Delete</a></p></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="3"><label>
+          <input type="submit" name="Submit" value="Add new" />
+        </label></td>
+      </tr>
+      </table>
+  </div>
+</form>
+</body>
+{% endblock %}

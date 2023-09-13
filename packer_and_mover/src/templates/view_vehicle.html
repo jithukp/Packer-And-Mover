@@ -1,0 +1,41 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+{% extends 'adminindex.html' %}
+{% block body %}
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<style>
+
+  .table{
+
+    width: 50%;
+
+  }
+
+</style>
+<form id="form1" name="form1" method="post" action="">
+  <div align="center">
+  <table width="200" border="1" class="table table-striped table-hover">
+    <tr>
+      <th scope="col">Vehicle type </th>
+      <th scope="col">RC details </th>
+      <th scope="col">Photo</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{i[1]}}</td>
+      <td><img src="../static/rcdetails/{{i[2]}}" width=100px" height="100px"></td>
+      <td><img src="../static/vphoto/{{i[3]}}" width=100px" height="100px"> </td>
+      <td><a href="delete?id={{i[0]}}">delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</form>
+</body>
+{% endblock %}

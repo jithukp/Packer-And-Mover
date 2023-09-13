@@ -1,0 +1,47 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+{% extends 'adminindex.html' %}
+{% block body %}
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<style>
+
+  .table{
+
+    width: 50%;
+
+  }
+
+</style>
+<form id="form1" name="form1" method="post" action="">
+  <div align="center">
+    <table width="200" border="1" class="table table-striped table-hover">
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">licence number </th>
+        <th scope="col">address</th>
+        <th scope="col">status</th>
+      </tr>
+      {% for i in val %}
+      <td>{{i[0]}}-{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}},{{i[4]}},{{i[5]}},{{i[6]}},{{i[7]}},{{i[8]}},{{i[9]}}</td>
+
+        {% if i[11]== 'block' %}
+        <!--<td><p><a href="BLOCK_DRIVER?id={{i[10]}}">block</a></p>-->
+      <td>  <p><a href="UNBLOCK_DRIVER?id={{i[10]}}">unblock</a></p></td>
+         {% else %}
+        <td><p><a href="BLOCK_DRIVER?id={{i[10]}}">block</a></p> </td>
+        <!--<p><a href="UNBLOCK_DRIVER?id={{i[10]}}">unblock</a></p></td>-->
+         {% endif %}
+      </tr>
+      {% endfor %}
+      </table>
+  </div>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'adminindex.html' %}
+{% block body %}
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<style>
+
+  .table{
+
+    width: 80%;
+
+  }
+
+</style>
+<form id="form1" name="form1" method="post" action="">
+  <table align="right">
+    <tr>
+      <td>From</td>
+      <td><input type="date" name="date1" class="form-control" value="{{ date1 }}"> </td>
+      <td>To</td>
+      <td><input type="date" name="date2" class="form-control" value="{{ date2 }}" > </td>
+      <td><input type="submit" name="btn" value="Search" class="btn btn-primary"> </td>
+    </tr>
+  </table>
+  <br><br>
+  {% if date1 %}
+  <div align="center">
+    <h3 align="center">Payment Report for the period {{ date1 }} to  {{ date2 }}</h3>
+    <table width="200" border="1" class="table table-striped table-hover">
+      <tr>
+        <th>SL. NO.</th>
+        <th scope="col">PARTICULARS</th>
+        <th scope="col">AMOUNT</th>
+      </tr>
+      {% for i in data %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{% if i['particulars'] =="Driver Payments" %} <a href="driver_payments"> {{i['particulars']}}</a> {% else %} <a href="worker_payments"> {{i['particulars']}}</a>{% endif %}</td>
+        <td>{{i['amount']}}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2" align="right">
+          <h4>Total Amount</h4>
+        </td>
+        <td>{{ tot }}</td>
+      </tr>
+      </table>
+  </div>
+  {% endif %}
+</form>
+</body>
+{% endblock %}

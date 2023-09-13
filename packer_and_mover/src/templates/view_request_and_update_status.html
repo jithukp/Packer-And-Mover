@@ -1,0 +1,49 @@
+{% extends 'workerindex.html' %}
+{% block body %}
+<!--<head>-->
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<style>
+
+  .table{
+
+    width: 80%;
+
+  }
+
+</style>
+<form id="form1" name="form1" method="post" action="">
+  <div align="center">
+    <table width="200" border="1" class="table table-striped table-hover">
+      <tr>
+        <th scope="col">SL. NO.</th>
+        <th scope="col">NAME</th>
+        <th scope="col">PHONE NUMBER</th>
+        <th scope="col">ADDRESS</th>
+        <th scope="col">NO OF WORKERS REQUIRED</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+      {% for i in val %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{i['first_name']}}-{{i['last_name']}}</td>
+        <td>{{i['phone_no']}}</td>
+        <td>{{i['house_name']}},  {{i['place']}}, {{i['post']}},<br>
+          {{i['city']}}, {{i['district']}},<br>
+          {{i['state']}}, {{ i['pin'] }}</td>
+        <td>{{ i['no_of_worker_required'] }}</td>
+        <td><a href="/rd?rid={{i['wr_id']}}#about"> Item details</a></td>
+        <td><a href="/WORKER_REQUEST/{{i['wr_id']}}">Accept</a></td>
+<!--        <td><a href="/WORKER_REQUEST/{{i['wr_id']}}/{{ i['no_of_worker_required'] }}">Accept</a></td>-->
+        <td><a href="/worker_reject_request/{{i['wr_id']}}">Reject</a></td>
+      </tr>
+      {% endfor %}
+      </table>
+  </div>
+</form>
+</body>
+{% endblock %}
